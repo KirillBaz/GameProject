@@ -1,22 +1,62 @@
 import Units.*;
+import Units.Priest;
+import Units.Wizard;
+import Units.Archer;
+import Units.Sniper;
+import Units.Pikeman;
+import Units.Rogue;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Priest priest = new Priest("Dorfwin");
-        System.out.println(priest);
-        Sniper sniper = new Sniper("Dordir");
-        System.out.println(sniper);
-        Wizard wizard = new Wizard("Raforh");
-        System.out.println(wizard);
-        Archer archer = new Archer("Anncyn");
-        System.out.println(archer);
-        Pikeman pikeman = new Pikeman("Raann");
-        System.out.println(pikeman);
-        Worker worker = new Worker("Robgron");
-        System.out.println(worker);
-        Rogue rogue = new Rogue("Borforh");
-        System.out.println(rogue);
+        List<BaseUnit> team1 = teamBuilder(1);
+        List<BaseUnit> team2 = teamBuilder(2);
+        System.out.println(team1);
+        System.out.println(team2);
+        System.out.println(team2.get(0).getPosition());
 
     }
 
+    public static List<BaseUnit> teamBuilder(int side12) {
+        List<BaseUnit> team = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+         int number = r.nextInt(7);
+        switch (number){
+            case 0:
+                team.add(new Archer("Archer", 0, 0));
+                break;
+            case 1:
+                team.add(new Pikeman("Pikeman", 0 ,0));
+                break;
+            case 2:
+                team.add(new Priest("Priest", 0, 0));
+                break;
+            case 3:
+                team.add(new Rogue("Rogue", 0, 0));
+                break;
+            case 4:
+                team.add(new Sniper("Sniper", 0, 0));
+                break;
+            case 5:
+                team.add(new Wizard("Wizard", 0, 0));
+                break;
+            case 6:
+                team.add(new Worker("Worker", 0, 0));
+                break;
+        }
+        if (side12==1) {
+            team.get(i).position.y = 0;
+            team.get(i).position.x = i;
+        }
+        else{
+            team.get(i).position.y = 9;
+            team.get(i).position.x = i;
+        }
+        }
+        return team;
+    }
 }

@@ -6,8 +6,12 @@ public abstract class BaseUnit{
 
 
     protected static Random r;
-   protected String name;
-   protected int hp;
+    public static int id;
+    static {
+        id=0;
+    }
+    protected int hp;
+    protected String name;
    protected int maxHP;
    protected int damage;
    protected  int experience;
@@ -16,8 +20,9 @@ public abstract class BaseUnit{
    protected int armour;
    protected boolean isAlive;
    protected int movementRange;
+   public Coordinates position;
 
-    public BaseUnit(String name, int hp, int maxHP, int damage, int experience, int level, int attackRange, int armour, boolean isAlive) {
+    public BaseUnit(String name, int hp, int maxHP, int damage, int experience, int level, int attackRange, int armour, boolean isAlive, int x, int y) {
         this.name = name;
         this.hp = hp;
         this.maxHP = maxHP;
@@ -27,9 +32,10 @@ public abstract class BaseUnit{
         this.attackRange = attackRange;
         this.armour = armour;
         this.isAlive = isAlive;
+        position = new Coordinates(x,y);
     }
 
-    public BaseUnit(String name) {
+    public BaseUnit(String name, int x, int y) {
        this.name = name;
        this.maxHP = 100;
        this.hp = maxHP;
@@ -40,6 +46,8 @@ public abstract class BaseUnit{
        this.armour = 0;
        this.isAlive = true;
        movementRange = 2;
+       id++;
+       position = new Coordinates(x, y);
     }
 
     public boolean isAlive() {
@@ -102,4 +110,7 @@ public abstract class BaseUnit{
        if (this.hp==0) isAlive = false;
     }
 
+    public Coordinates getPosition() {
+        return position;
+    }
 }

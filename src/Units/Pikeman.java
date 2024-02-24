@@ -1,9 +1,11 @@
 package Units;
 
-public class Pikeman extends BaseUnit{
+import Units.BaseUnit;
+
+public class Pikeman extends BaseUnit {
     int rage;
-    public Pikeman(String name) {
-        super(name);
+    public Pikeman(String name, int x, int y) {
+        super(name,x,y);
         this.rage = 1;
     }
 
@@ -13,7 +15,7 @@ public class Pikeman extends BaseUnit{
 
     @Override
     public String toString() {
-        return "Pikeman: " +
+        return "#"+BaseUnit.id+" "+"Pikeman: " +
                 "name='" + name + '\'';
     }
 }

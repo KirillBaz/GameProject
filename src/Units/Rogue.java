@@ -1,10 +1,12 @@
 package Units;
 
-public class Rogue extends BaseUnit{
+import Units.BaseUnit;
+
+public class Rogue extends BaseUnit {
     int luck;
 
-    public Rogue(String name) {
-        super(name);
+    public Rogue(String name, int x, int y) {
+        super(name,x,y);
         this.luck = 1;
     }
 
@@ -14,7 +16,7 @@ public class Rogue extends BaseUnit{
 
     @Override
     public String toString() {
-        return "Rogue: " +
+        return "#"+BaseUnit.id+" "+"Rogue: " +
                 "name='" + name + '\'';
     }
 }

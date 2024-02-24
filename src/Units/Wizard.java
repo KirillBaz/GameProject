@@ -1,11 +1,13 @@
 package Units;
 
+import Units.BaseUnit;
+
 public class Wizard extends BaseUnit {
     int wisdom;
     int scripts;
 
-    public Wizard(String name) {
-        super(name);
+    public Wizard(String name, int x, int y) {
+        super(name, x, y);
         this.wisdom = 1;
         this.scripts = 3;
     }
@@ -16,7 +18,7 @@ public class Wizard extends BaseUnit {
 
     @Override
     public String toString() {
-        return "Wizard: " +
+        return "#"+BaseUnit.id+" "+"Wizard: " +
                 "name='" + name + '\'';
     }
 

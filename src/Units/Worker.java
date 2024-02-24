@@ -4,8 +4,8 @@ import Units.BaseUnit;
 
 public class Worker extends BaseUnit {
 
-    public Worker(String name) {
-        super(name);
+    public Worker(String name,int x, int y) {
+        super(name,x,y);
     }
     public void buildAWall(){
 
@@ -17,7 +17,7 @@ public class Worker extends BaseUnit {
 
     @Override
     public String toString() {
-        return "Units.Worker: " +
+        return "#"+BaseUnit.id+" "+"Units.Worker: " +
                 "name='" + name + '\'';
     }
 }
