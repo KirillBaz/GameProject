@@ -2,6 +2,8 @@ package Units;
 
 import Units.BaseUnit;
 
+import java.util.List;
+
 public class Priest extends BaseUnit {
     int maxMana;
     int mana;
@@ -12,6 +14,7 @@ public class Priest extends BaseUnit {
         this.maxMana = 100;
         this.mana = maxMana;
         this.faith = 1;
+        this.priority = 1;
     }
     public void Healing(BaseUnit targetAlly){
         targetAlly.hp += 20*this.faith;
@@ -20,7 +23,11 @@ public class Priest extends BaseUnit {
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Priest: " +
+        return "#"+this.id+" "+"Priest: " +
                 "name='" + name + '\'';
+    }
+    @Override
+    public void step(List<BaseUnit> enemyTeam) {
+
     }
 }

@@ -2,11 +2,14 @@ package Units;
 
 import Units.BaseUnit;
 
+import java.util.List;
+
 public class Pikeman extends BaseUnit {
     int rage;
     public Pikeman(String name, int x, int y) {
         super(name,x,y);
         this.rage = 1;
+        this.priority = 2;
     }
 
     public int getRage() {
@@ -15,7 +18,11 @@ public class Pikeman extends BaseUnit {
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Pikeman: " +
+        return "#"+this.id+" "+"Pikeman: " +
                 "name='" + name + '\'';
+    }
+    @Override
+    public void step(List<BaseUnit> enemyTeam) {
+
     }
 }

@@ -2,12 +2,11 @@ package Units;
 
 public class Archer extends Shooter {
     int shotsByStep;
-    int amountOfArrows;
 
     public Archer(String name, int x, int y) {
         super(name, x, y);
         this.shotsByStep = 1;
-        this.amountOfArrows = 5;
+        super.charges = 7;
     }
 
     public int getShotsByStep() {
@@ -15,12 +14,13 @@ public class Archer extends Shooter {
     }
 
     public int getAmountOfArrows() {
-        return amountOfArrows;
+        return charges;
     }
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Archer: " +
+        return "#"+this.id+" "+"Archer: " +
                 "name='" + name + '\'';
     }
+
 }

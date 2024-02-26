@@ -2,6 +2,8 @@ package Units;
 
 import Units.BaseUnit;
 
+import java.util.List;
+
 public class Wizard extends BaseUnit {
     int wisdom;
     int scripts;
@@ -10,6 +12,7 @@ public class Wizard extends BaseUnit {
         super(name, x, y);
         this.wisdom = 1;
         this.scripts = 3;
+        this.priority = 1;
     }
 
     public void increaseDamage(BaseUnit targetAlly){
@@ -18,7 +21,7 @@ public class Wizard extends BaseUnit {
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Wizard: " +
+        return "#"+this.id+" "+"Wizard: " +
                 "name='" + name + '\'';
     }
 
@@ -28,5 +31,9 @@ public class Wizard extends BaseUnit {
 
     public int getScripts() {
         return scripts;
+    }
+    @Override
+    public void step(List<BaseUnit> enemyTeam) {
+
     }
 }

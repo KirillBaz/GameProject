@@ -7,8 +7,10 @@ import Units.Pikeman;
 import Units.Rogue;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -16,8 +18,9 @@ public class Main {
         List<BaseUnit> team2 = teamBuilder(2);
         System.out.println(team1);
         System.out.println(team2);
-        System.out.println(team2.get(0).getPosition());
-
+        //System.out.println(team1.get(9).getPosition());
+        //for (BaseUnit hero: team1) if (hero instanceof Shooter) System.out.println(hero+" "+hero.getPriority());
+        for (BaseUnit hero1 : team1 ) hero1.step(team2);
     }
 
     public static List<BaseUnit> teamBuilder(int side12) {
@@ -48,15 +51,20 @@ public class Main {
                 team.add(new Worker("Worker", 0, 0));
                 break;
         }
+
         if (side12==1) {
             team.get(i).position.y = 0;
             team.get(i).position.x = i;
+            team.get(i).setId(i+1);
         }
         else{
             team.get(i).position.y = 9;
             team.get(i).position.x = i;
+            team.get(i).setId(i+11);
         }
         }
+        team.sort(new PriorityComparator());
+        Collections.reverse(team);
         return team;
     }
 }

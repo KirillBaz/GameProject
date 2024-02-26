@@ -2,10 +2,13 @@ package Units;
 
 import Units.BaseUnit;
 
+import java.util.List;
+
 public class Worker extends BaseUnit {
 
     public Worker(String name,int x, int y) {
         super(name,x,y);
+        this.priority = 0;
     }
     public void buildAWall(){
 
@@ -13,11 +16,14 @@ public class Worker extends BaseUnit {
     public void bringAnArrow(){
 
     }
+    @Override
+    public void step(List<BaseUnit> enemyTeam) {
 
+    }
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Units.Worker: " +
+        return "#"+this.id+" "+"Units.Worker: " +
                 "name='" + name + '\'';
     }
 }

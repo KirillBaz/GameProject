@@ -2,12 +2,15 @@ package Units;
 
 import Units.BaseUnit;
 
+import java.util.List;
+
 public class Rogue extends BaseUnit {
     int luck;
 
     public Rogue(String name, int x, int y) {
         super(name,x,y);
         this.luck = 1;
+        this.priority = 2;
     }
 
     public int getLuck() {
@@ -16,7 +19,11 @@ public class Rogue extends BaseUnit {
 
     @Override
     public String toString() {
-        return "#"+BaseUnit.id+" "+"Rogue: " +
+        return "#"+this.id+" "+"Rogue: " +
                 "name='" + name + '\'';
+    }
+    @Override
+    public void step(List<BaseUnit> enemyTeam) {
+
     }
 }

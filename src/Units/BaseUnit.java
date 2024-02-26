@@ -1,20 +1,27 @@
 package Units;
 
+import java.util.List;
 import java.util.Random;
 
-public abstract class BaseUnit{
+public abstract class BaseUnit implements Step{
 
 
     protected static Random r;
-    public static int id;
-    static {
-        id=0;
-    }
+//    public static int id;
+//    static {
+//        id=0;
+//    }
+    protected int id = 0;
     protected int hp;
     protected String name;
    protected int maxHP;
    protected int damage;
-   protected  int experience;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    protected  int priority;
+    protected  int experience;
    protected int level;
    protected int attackRange;
    protected int armour;
@@ -48,6 +55,7 @@ public abstract class BaseUnit{
        movementRange = 2;
        id++;
        position = new Coordinates(x, y);
+       priority = 0;
     }
 
     public boolean isAlive() {
@@ -88,23 +96,16 @@ public abstract class BaseUnit{
         }
     }
 
-    @Override
-    public String toString() {
-        return "BaseUnit{" +
-                "name='" + name + '\'' +
-                ", hp=" + hp +
-                ", damage=" + damage +
-                ", armour=" + armour +
-                ", isAlive=" + isAlive +
-                '}';
-    }
+
     public void Attack(BaseUnit target) {
        // if (distance<=attackRange){
+        System.out.println("Персонаж "+target.id+" "+ target.name+"имеет"+target.hp);
         target.hp -= this.damage-target.armour;
         target.armour--;
         if (!target.isAlive()){
             this.experience+=100;
         }
+        System.out.println("Теперь у него "+target.hp);
     }
     public void death(){
        if (this.hp==0) isAlive = false;
@@ -113,4 +114,19 @@ public abstract class BaseUnit{
     public Coordinates getPosition() {
         return position;
     }
+
+    public int getPriority() {
+        return priority;
+    }
+    //    public BaseUnit findNearestEnemy(List<BaseUnit> enemyTeam){
+//        double minDist = 100;
+//        BaseUnit nearestEnemy=enemyTeam.get(0);
+//        for (BaseUnit enemy : enemyTeam){
+//            if (position.targetDistance(enemy)<minDist){
+//                nearestEnemy = enemy;
+//                minDist = position.targetDistance(enemy);
+//            }
+//        }
+//        return nearestEnemy;
+//    }
 }
