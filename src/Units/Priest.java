@@ -27,7 +27,7 @@ public class Priest extends BaseUnit {
                 "name='" + name + '\'';
     }
     @Override
-    public void step(List<BaseUnit> enemyTeam) {
+    public void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies) {
 
     }
 }

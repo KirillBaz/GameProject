@@ -1,6 +1,6 @@
 package Units;
 
-public class Sniper extends Shooter {
+public class Sniper extends Shooters {
     int visibility;
     int accuracy;
 

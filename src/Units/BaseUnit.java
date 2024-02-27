@@ -118,15 +118,15 @@ public abstract class BaseUnit implements Step{
     public int getPriority() {
         return priority;
     }
-    //    public BaseUnit findNearestEnemy(List<BaseUnit> enemyTeam){
-//        double minDist = 100;
-//        BaseUnit nearestEnemy=enemyTeam.get(0);
-//        for (BaseUnit enemy : enemyTeam){
-//            if (position.targetDistance(enemy)<minDist){
-//                nearestEnemy = enemy;
-//                minDist = position.targetDistance(enemy);
-//            }
-//        }
-//        return nearestEnemy;
-//    }
+    public BaseUnit findNearestEnemy(List<BaseUnit> enemyTeam){
+        double minDist = 100;
+        BaseUnit nearestEnemy=null;
+        for (BaseUnit enemy : enemyTeam){
+            if (position.targetDistance(enemy)<minDist){
+                nearestEnemy = enemy;
+                minDist = position.targetDistance(enemy);
+            }
+        }
+        return nearestEnemy;
+    }
 }

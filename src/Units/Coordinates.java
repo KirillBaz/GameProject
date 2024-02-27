@@ -1,6 +1,9 @@
 package Units;
 import Units.BaseUnit;
 
+import javax.swing.text.Position;
+import java.util.Objects;
+
 public class Coordinates {
     public int x;
     public int y;
@@ -29,4 +32,12 @@ public class Coordinates {
                 "x=" + x +
                 ", y=" + y;
     }
+    public Coordinates getDiff (Coordinates enemyCoordinates){
+        return new Coordinates(x-enemyCoordinates.x, y - enemyCoordinates.y);
+    }
+
+    public boolean equals(Coordinates target) {
+        return x == target.x && y == target.y;
+    }
+
 }

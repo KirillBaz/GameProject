@@ -3,5 +3,5 @@ package Units;
 import java.util.List;
 
 public interface Step {
-    void step(List<BaseUnit> enemyTeam);
+    void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies);
 }

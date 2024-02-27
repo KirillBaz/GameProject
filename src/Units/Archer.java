@@ -1,6 +1,6 @@
 package Units;
 
-public class Archer extends Shooter {
+public class Archer extends Shooters {
     int shotsByStep;
 
     public Archer(String name, int x, int y) {

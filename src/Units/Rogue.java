@@ -4,7 +4,7 @@ import Units.BaseUnit;
 
 import java.util.List;
 
-public class Rogue extends BaseUnit {
+public class Rogue extends Warriors {
     int luck;
 
     public Rogue(String name, int x, int y) {
@@ -22,8 +22,5 @@ public class Rogue extends BaseUnit {
         return "#"+this.id+" "+"Rogue: " +
                 "name='" + name + '\'';
     }
-    @Override
-    public void step(List<BaseUnit> enemyTeam) {
 
-    }
 }

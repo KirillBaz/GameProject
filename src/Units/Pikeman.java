@@ -4,7 +4,7 @@ import Units.BaseUnit;
 
 import java.util.List;
 
-public class Pikeman extends BaseUnit {
+public class Pikeman extends Warriors {
     int rage;
     public Pikeman(String name, int x, int y) {
         super(name,x,y);
@@ -21,8 +21,5 @@ public class Pikeman extends BaseUnit {
         return "#"+this.id+" "+"Pikeman: " +
                 "name='" + name + '\'';
     }
-    @Override
-    public void step(List<BaseUnit> enemyTeam) {
 
-    }
 }

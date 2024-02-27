@@ -20,7 +20,8 @@ public class Main {
         System.out.println(team2);
         //System.out.println(team1.get(9).getPosition());
         //for (BaseUnit hero: team1) if (hero instanceof Shooter) System.out.println(hero+" "+hero.getPriority());
-        for (BaseUnit hero1 : team1 ) hero1.step(team2);
+        for (BaseUnit hero1 : team1 ) hero1.step(team2, team1);
+        for (BaseUnit hero2: team2) hero2.step(team1, team2);
     }
 
     public static List<BaseUnit> teamBuilder(int side12) {
