@@ -3,7 +3,7 @@ package Units;
 import java.util.List;
 
 public abstract class Shooters extends BaseUnit {
-    int charges;
+    //int charges;
     public Shooters(String name, int x, int y) {
         super(name, x, y);
         this.priority = 3;
@@ -23,11 +23,12 @@ public abstract class Shooters extends BaseUnit {
     @Override
     public void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies) {
         BaseUnit enemy = findNearestEnemy(enemyTeam);
-    if (this.isAlive == true && this.charges!=0 && enemy!=null) {
+    if (this.isAlive == true && /*this.charges!=0*/  enemy!=null) {
         this.Attack(enemy);
-        this.charges--;
-        System.out.println("У персонажа "+this.id+" осталось "+this.charges+" выстрелов");
+        //this.charges--;
+        System.out.println("У персонажа "+this.id+" осталось "/*+this.charges+" выстрелов"*/);
     }
     else return;
     }
+
 }

@@ -102,13 +102,24 @@ public abstract class BaseUnit implements Step{
         System.out.println("Персонаж "+target.id+" "+ target.name+"имеет"+target.hp);
         target.hp -= this.damage-target.armour;
         target.armour--;
-        if (!target.isAlive()){
+        if (target.hp<1){
+            target.death(target);
             this.experience+=100;
         }
         System.out.println("Теперь у него "+target.hp);
     }
-    public void death(){
-       if (this.hp==0) isAlive = false;
+
+    @Override
+    public String toString() {
+        return "BaseUnit{" +
+                "id=" + id +
+                ", hp=" + hp +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public void death(BaseUnit unit){
+        if(unit.hp<1) isAlive = false;
     }
 
     public Coordinates getPosition() {
@@ -122,11 +133,15 @@ public abstract class BaseUnit implements Step{
         double minDist = 100;
         BaseUnit nearestEnemy=null;
         for (BaseUnit enemy : enemyTeam){
-            if (position.targetDistance(enemy)<minDist){
+            if (position.targetDistance(enemy)<minDist && enemy.isAlive==true){
                 nearestEnemy = enemy;
                 minDist = position.targetDistance(enemy);
             }
         }
         return nearestEnemy;
+    }
+
+    public String getInfo(){
+        return " ";
     }
 }

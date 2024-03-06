@@ -20,7 +20,9 @@ public class Rogue extends Warriors {
     @Override
     public String toString() {
         return "#"+this.id+" "+"Rogue: " +
-                "name='" + name + '\'';
+                "name='" + name + '\''+" "+ this.hp;
     }
-
+    public String getInfo(){
+        return "БРазбойник ";
+    }
 }

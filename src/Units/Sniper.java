@@ -8,7 +8,7 @@ public class Sniper extends Shooters {
         super(name, x, y);
         this.visibility = 1;
         this.accuracy = 5;
-        super.charges = 5;
+        //super.charges = 5;
     }
 
     public int getVisibility() {
@@ -22,6 +22,9 @@ public class Sniper extends Shooters {
     @Override
     public String toString() {
         return "#"+this.id+" "+"Sniper: " +
-                "name='" + name + '\'';
+                "name='" + name + '\''+" "+ this.hp;
+    }
+    public String getInfo(){
+        return "ДСнайпер ";
     }
 }

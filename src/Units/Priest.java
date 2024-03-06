@@ -24,10 +24,13 @@ public class Priest extends BaseUnit {
     @Override
     public String toString() {
         return "#"+this.id+" "+"Priest: " +
-                "name='" + name + '\'';
+                "name='" + name + '\''+" "+ this.hp;
     }
     @Override
     public void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies) {
 
+    }
+    public String getInfo(){
+        return "ММонах ";
     }
 }

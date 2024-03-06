@@ -19,7 +19,10 @@ public class Pikeman extends Warriors {
     @Override
     public String toString() {
         return "#"+this.id+" "+"Pikeman: " +
-                "name='" + name + '\'';
+                "name='" + name + '\''+" "+ this.hp;
+    }
+    public String getInfo(){
+        return "БКопейщик ";
     }
 
 }

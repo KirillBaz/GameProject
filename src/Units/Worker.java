@@ -24,6 +24,9 @@ public class Worker extends BaseUnit {
     @Override
     public String toString() {
         return "#"+this.id+" "+"Units.Worker: " +
-                "name='" + name + '\'';
+                "name='" + name + '\''+" "+ this.hp;
+    }
+    public String getInfo(){
+        return "ККрестьянин ";
     }
 }

@@ -6,66 +6,94 @@ import Units.Sniper;
 import Units.Pikeman;
 import Units.Rogue;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 
 
 public class Main {
+ public static List<BaseUnit> holyTeam = teamBuilder(1);
+ public static List<BaseUnit> darkTeam = teamBuilder(2);
+ public static List<BaseUnit> allTeam = new ArrayList<>();
+
+
     public static void main(String[] args) {
-        List<BaseUnit> team1 = teamBuilder(1);
-        List<BaseUnit> team2 = teamBuilder(2);
-        System.out.println(team1);
-        System.out.println(team2);
-        //System.out.println(team1.get(9).getPosition());
-        //for (BaseUnit hero: team1) if (hero instanceof Shooter) System.out.println(hero+" "+hero.getPriority());
-        for (BaseUnit hero1 : team1 ) hero1.step(team2, team1);
-        for (BaseUnit hero2: team2) hero2.step(team1, team2);
-    }
+        allTeam.addAll(holyTeam);
+        allTeam.addAll(darkTeam);
+        System.out.println(holyTeam);
+        System.out.println(darkTeam);
+        //System.out.println(holyTeam.get(9).getPosition());
+        //for (BaseUnit hero: holyTeam) if (hero instanceof Shooter) System.out.println(hero+" "+hero.getPriority());
+//        for (BaseUnit hero1 : holyTeam ) hero1.step(darkTeam, holyTeam);
+//        for (BaseUnit hero2: darkTeam) hero2.step(holyTeam, darkTeam);
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            View.view();
+            scanner.nextLine();
+            for (BaseUnit unit : allTeam) {
+                if (holyTeam.contains(unit)) unit.step(darkTeam, holyTeam);
+                else unit.step(holyTeam, darkTeam);
+            }
+            int liveCounter1 = 0;
+            for (BaseUnit unit : holyTeam) {
+                if (unit.isAlive()) liveCounter1 += 1;
 
-    public static List<BaseUnit> teamBuilder(int side12) {
-        List<BaseUnit> team = new ArrayList<>();
-        Random r = new Random();
-        for (int i = 0; i < 10; i++) {
-         int number = r.nextInt(7);
-        switch (number){
-            case 0:
-                team.add(new Archer("Archer", 0, 0));
+            }
+            if (liveCounter1 == 0) {System.out.println("darkTeam wins!");
+            break;}
+            int liveCounter2 = 0;
+            for (BaseUnit unit : darkTeam) {
+                if (unit.isAlive()) liveCounter2 += 1;
+            }
+            if (liveCounter2 == 0) {
+                System.out.println("holyTeam wins!");
+                View.view();
                 break;
-            case 1:
-                team.add(new Pikeman("Pikeman", 0 ,0));
-                break;
-            case 2:
-                team.add(new Priest("Priest", 0, 0));
-                break;
-            case 3:
-                team.add(new Rogue("Rogue", 0, 0));
-                break;
-            case 4:
-                team.add(new Sniper("Sniper", 0, 0));
-                break;
-            case 5:
-                team.add(new Wizard("Wizard", 0, 0));
-                break;
-            case 6:
-                team.add(new Worker("Worker", 0, 0));
-                break;
+            }
+        }
+    }
+        public static List<BaseUnit> teamBuilder ( int side12){
+            ArrayList<BaseUnit> team = new ArrayList<>();
+            Random r = new Random();
+            for (int i = 1; i < 11; i++) {
+                int number = r.nextInt(7);
+                switch (number) {
+                    case 0:
+                        team.add(new Archer("Archer", 0, 0));
+                        break;
+                    case 1:
+                        team.add(new Pikeman("Pikeman", 0, 0));
+                        break;
+                    case 2:
+                        team.add(new Priest("Priest", 0, 0));
+                        break;
+                    case 3:
+                        team.add(new Rogue("Rogue", 0, 0));
+                        break;
+                    case 4:
+                        team.add(new Sniper("Sniper", 0, 0));
+                        break;
+                    case 5:
+                        team.add(new Wizard("Wizard", 0, 0));
+                        break;
+                    case 6:
+                        team.add(new Worker("Worker", 0, 0));
+                        break;
+                }
+
+                if (side12 == 1) {
+                    team.get(i - 1).position.y = 1;
+                    team.get(i - 1).position.x = i;
+                    team.get(i - 1).setId(i);
+                } else {
+                    team.get(i - 1).position.y = 10;
+                    team.get(i - 1).position.x = i;
+                    team.get(i - 1).setId(i + 10);
+                }
+            }
+            team.sort(new PriorityComparator());
+            Collections.reverse(team);
+            return team;
+
         }
 
-        if (side12==1) {
-            team.get(i).position.y = 0;
-            team.get(i).position.x = i;
-            team.get(i).setId(i+1);
-        }
-        else{
-            team.get(i).position.y = 9;
-            team.get(i).position.x = i;
-            team.get(i).setId(i+11);
-        }
-        }
-        team.sort(new PriorityComparator());
-        Collections.reverse(team);
-        return team;
     }
-}

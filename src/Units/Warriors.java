@@ -24,7 +24,7 @@ public abstract class Warriors extends BaseUnit {
         else currentPosition.y += diff.y < 0 ? 1 : -1;
 
         for (BaseUnit friend : allies) {
-            if (friend.position.equals(currentPosition)) return;
+            if (friend.position.equals(currentPosition)&& target.hp>0) return;
 
         }
         System.out.println("Персонаж "+this.id+" сдвинулся с "+ this.position+ " на "+currentPosition);

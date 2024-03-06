@@ -21,8 +21,8 @@ public class Wizard extends BaseUnit {
 
     @Override
     public String toString() {
-        return "#"+this.id+" "+"Wizard: " +
-                "name='" + name + '\'';
+        return "#"+this.id+" "+"МWizard: " +
+                "name='" + name + '\''+" "+ this.hp;
     }
 
     public int getWisdom() {
@@ -35,5 +35,8 @@ public class Wizard extends BaseUnit {
     @Override
     public void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies) {
 
+    }
+    public String getInfo(){
+        return "МВолшебник";
     }
 }
