@@ -4,7 +4,7 @@ import Units.BaseUnit;
 
 import java.util.List;
 
-public class Wizard extends BaseUnit {
+public class Wizard extends Magicians {
     int wisdom;
     int scripts;
 
@@ -12,7 +12,6 @@ public class Wizard extends BaseUnit {
         super(name, x, y);
         this.wisdom = 1;
         this.scripts = 3;
-        this.priority = 1;
     }
 
     public void increaseDamage(BaseUnit targetAlly){

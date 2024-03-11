@@ -3,7 +3,8 @@ package Units;
 import java.util.List;
 
 public abstract class Shooters extends BaseUnit {
-    //int charges;
+    int maxcharges;
+    int charges;
     public Shooters(String name, int x, int y) {
         super(name, x, y);
         this.priority = 3;

@@ -6,7 +6,8 @@ public class Archer extends Shooters {
     public Archer(String name, int x, int y) {
         super(name, x, y);
         this.shotsByStep = 1;
-        //super.charges = 7;
+        super.maxcharges = 7;
+        super.charges = maxcharges;
     }
 
     public int getShotsByStep() {

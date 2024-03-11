@@ -8,7 +8,8 @@ public class Sniper extends Shooters {
         super(name, x, y);
         this.visibility = 1;
         this.accuracy = 5;
-        //super.charges = 5;
+        super.maxcharges = 5;
+        super.charges = maxcharges;
     }
 
     public int getVisibility() {

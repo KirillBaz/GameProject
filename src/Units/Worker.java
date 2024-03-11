@@ -18,7 +18,9 @@ public class Worker extends BaseUnit {
     }
     @Override
     public void step(List<BaseUnit> enemyTeam, List<BaseUnit> allies) {
-
+        for (BaseUnit ally: allies){
+        if (ally instanceof Shooters && ((Shooters) ally).charges<((Shooters) ally).maxcharges) ((Shooters) ally).charges++;
+        }
     }
 
     @Override
@@ -27,6 +29,6 @@ public class Worker extends BaseUnit {
                 "name='" + name + '\''+" "+ this.hp;
     }
     public String getInfo(){
-        return "ККрестьянин ";
+        return "Крестьянин ";
     }
 }

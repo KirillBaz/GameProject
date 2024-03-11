@@ -4,7 +4,7 @@ import Units.BaseUnit;
 
 import java.util.List;
 
-public class Priest extends BaseUnit {
+public class Priest extends Magicians {
     int maxMana;
     int mana;
     int faith;
@@ -14,7 +14,6 @@ public class Priest extends BaseUnit {
         this.maxMana = 100;
         this.mana = maxMana;
         this.faith = 1;
-        this.priority = 1;
     }
     public void Healing(BaseUnit targetAlly){
         targetAlly.hp += 20*this.faith;
